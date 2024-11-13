@@ -1,0 +1,27 @@
+header {
+    background-color: #DDDDDD;
+    color: #fff;
+    margin-bottom: 2rem;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+journal {
+    background-color: #B088f2;
+    color: #000;
+    class: "w-75 p-3"
+    text-align: center;
+}
+
+
+.mclaren-clicked {
+    background-color: orange;
+}
+
+.lambo-clicked {
+    background-color: #6644f2;
+}
+
+.vette-clicked {
+    background-color: red;
+}

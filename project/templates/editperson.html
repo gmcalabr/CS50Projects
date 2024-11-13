@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit Record
+{% endblock %}
+
+{% block main %}
+
+<form action="/editperson" method="post">
+    <div class="mb-3">
+
+        First Name <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="first" value="{{ person[0].first }}" type="text" required>
+        <p></p>
+        Last Name <input autocomplete="off" class="form-control mx-auto w-auto" name="last" value="{{ person[0].last }}" type="text" required>
+        <p></p>
+        Middle Name <input autocomplete="off" class="form-control mx-auto w-auto" name="middle" value="{{ person[0].middle }}" type="text">
+        <p></p>
+        Birth Date <input autocomplete="off" class="form-control mx-auto w-auto" name="birthdate" value="{{ person[0].birthdate }}" type="date">
+        <p></p>
+        Birth City <input autocomplete="off" class="form-control mx-auto w-auto" name="birthcity" value="{{ person[0].birthcity }}" type="text">
+        <p></p>
+        Birth Country <input autocomplete="off" class="form-control mx-auto w-auto" name="birthcountry" value="{{ person[0].birthcountry }}" type="text">
+        <p></p>
+        Death Date <input autocomplete="off" class="form-control mx-auto w-auto" name="deathdate" value="{{ person[0].deathdate }}" type="date">
+        <p></p>
+        Death City <input autocomplete="off" class="form-control mx-auto w-auto" name="deathcity" value="{{ person[0].deathcity }}" type="text">
+        <p></p>
+        Death Country<input autocomplete="off" class="form-control mx-auto w-auto" name="deathcountry" value="{{ person[0].deathcountry }}" type="text">
+        <p></p>
+        Primary Occupation <input autocomplete="off" class="form-control mx-auto w-auto" name="occupation1" value="{{ person[0].occupation1 }}" type="text">
+        <p></p>
+        Secondary Occupation <input autocomplete="off" class="form-control mx-auto w-auto" name="occupation2" value="{{ person[0].occupation2 }}" type="text">
+        <p></p>
+        Tertiary Occupation <input autocomplete="off" class="form-control mx-auto w-auto" name="occupation3" value="{{ person[0].occupation3 }}" type="text">
+        <input autocomplete="off" class="form-control mx-auto w-auto" name="editPersonId" value="{{ editPersonId }}" type="hidden">
+
+    </div>
+    <button class="btn btn-primary" type="submit">Submit Information</button>
+
+</form>
+
+<script>
+
+    const person = {{ person | tojson }};
+
+    window.onload = function() {
+        function showAlert(message) {
+            const alertPlaceholder = document.getElementById('alert-placeholder');
+            alertPlaceholder.innerHTML = `
+            <div class="alert alert-primary mb-0 text-center" role="alert">
+                ${message}
+            </div>
+        `;
+        }
+
+        const urlParams = new
+        URLSearchParams(window.location.search);
+        const alert = urlParams.get('alert');
+        console.log(alert);
+        if alert != Null:
+            showAlert(alert)
+    };
+
+</script>
+
+{% endblock %}
+
+
+

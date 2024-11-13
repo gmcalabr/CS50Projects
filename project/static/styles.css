@@ -1,0 +1,119 @@
+/* Size for brand */
+
+nav .navbar-brand
+{
+    font-size: xx-large;
+}
+
+/* Colors for brand */
+nav .navbar-brand .blue
+{
+    color: #83a4cf;
+}
+nav .navbar-brand .red
+{
+    color: #d2505d;
+}
+nav .navbar-brand .yellow
+{
+    color: #d1cb53;
+}
+nav .navbar-brand .green
+{
+    color: #b7cba8;
+}
+
+
+.hidden {
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+}
+
+.visible {
+    opacity: 1;
+}
+
+
+.table_custom {
+    --bs-table-bg: transparent !important;
+}
+
+
+body {
+    background-image: url('branch_background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+.container-fluid {
+    background-image: url('topbar_background.jpg');
+    background-size: cover;
+    background-position: center -20px;
+}
+
+.recenter_button {
+  background-image: url('Life_Markers_Icon.webp');
+  background-size: 150px 150px;
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-color: #9dac8b;
+  border: large;
+  border-color: #7e9871;
+  color: white;
+  font-family: Garamond, serif;
+  padding: 15px 32px 15px 150px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 24px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+
+.flex-container {
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: DodgerBlue;
+  justify-content: center; /* Centers items horizontally */
+  align-items: center; /* Centers items vertically */
+}
+
+.flex-container > div {
+  background-color: #f1f1f1;
+  width: 300px;
+  margin: 10px;
+  text-align: center;
+  line-height: 36px;
+  font-size: 18px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);;
+    grid-gap: 10px;
+    align-items: start;
+    justify-items: center;
+    margin: auto;
+    width: 1200px;
+    }
+
+.grid div {
+    border: 1px solid rgba(0,0,0,0.3);
+    box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.3);
+    max-width: 100%;
+    }
+
+.grid div:nth-child(1) {
+    grid-column: span 4;
+}
+
+.grid div:nth-child(2) {
+    grid-column: span 2;
+    }
+
+.grid div:nth-child(3) {
+    grid-column: span 2;
+    }

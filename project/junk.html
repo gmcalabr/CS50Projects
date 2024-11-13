@@ -1,0 +1,19 @@
+Sure! To implement this using JavaScript, you can add a script to your HTML that dynamically inserts the alert. Here's a general idea:
+
+Add a placeholder in your HTML where the alert will go:
+<div id="alert-placeholder"></div>
+Add a script to insert the alert when needed:
+<script>
+    function showAlert(message) {
+        const alertPlaceholder = document.getElementById('alert-placeholder');
+        alertPlaceholder.innerHTML = `
+            <div class="alert alert-primary mb-0 text-center" role="alert">
+                ${message}
+            </div>
+        `;
+    }
+
+    // Call this function when you want to show the alert
+    showAlert('Bought!');
+</script>
+This way, you can call showAlert with the appropriate message when you need to display the alert.

@@ -1,0 +1,12 @@
+sort1 uses: Bubble Sort
+
+How do you know?: Extremely fast with already sorted data, omega(n). Much slower with random or reversed data, O(n^2).
+
+sort2 uses: Merge Sort
+
+How do you know?: Virtually uneffected by data order, so O() and omega() are the same. Not much slower with very large sets, so much faster than O(n^2). Fastest sort overall.
+
+sort3 uses: Selection Sort
+
+How do you know?: Mostly uneffected by data order. O(n^2) and omega(n^2). Exponentially slower for larger data size. Faster than Sort1 in most cases.
+

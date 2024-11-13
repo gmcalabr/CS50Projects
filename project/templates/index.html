@@ -1,0 +1,187 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    toggle1
+{% endblock %}
+
+{% block main %}
+
+    <button type="button" class="recenter_button" id="restart" style="visibility:hidden;" onclick=showPerson(people[0].id)>Recenter tree on Yourself</button>
+
+    <div class="grid">
+        <div id="placeholder1"></div>
+        <div id="placeholder2"></div>
+        <div id="placeholder3"></div>
+        <div id="placeholder4"></div>
+        <div id="placeholder5"></div>
+        <div id="placeholder6"></div>
+        <div id="placeholder7"></div>
+    </div>
+  </body>
+
+  <script>
+
+    const people = {{ people | tojson }};
+    var id1;
+
+
+    function generateTableHTML(person) {
+    let addMomButton = person.mother == 0 ? `<button class="btn btn-outline-primary" type="submit" onclick="setFormData(${person.id}, 'mom')">Add a mom</button>` : '';
+    let addDadButton = person.father == 0 ? `<button class="btn btn-outline-primary" type="submit" onclick="setFormData(${person.id}, 'dad')">Add a dad</button>` : '';
+    let centerperson = person.id != id1 ? `<button class="btn btn-outline-success" onclick="showPerson(${person.id})">Focus on ${person.first}</button>` : '';
+    let editperson = `<button class="btn btn-outline-danger" type="button" onclick="editRecord(${person.id})">Edit Record</button>`;
+
+    return `
+        <form id="personForm-${person.id}" action="/editperson" method="GET">
+            <input type="hidden" name="childid" id="childid-${person.id}" value="">
+            <input type="hidden" name="relation" id="relation-${person.id}" value="">
+            <input type="hidden" name="personData" id="personData-${person.id}" value="">
+            <table class="table table-striped table_custom">
+                <thead>
+                    <tr>
+                        <td class="text-start">${person.first} ${person.middle} ${person.last}</td><td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="text-start">${centerperson}</td><td>${editperson}</td></tr>
+                    <tr><td class="text-start">Birthdate</td><td>${person.birthdate}</td></tr>
+                    <tr><td class="text-start">Birth City</td><td>${person.birthcity}</td></tr>
+                    <tr><td class="text-start">Deathdate</td><td>${person.deathdate}</td></tr>
+                    <tr><td class="text-start">Death City</td><td>${person.deathcity}</td></tr>
+                    <tr><td class="text-start">Occupation</td><td>${person.occupation1}</td></tr>
+                    <tr><td class="text-start">${addMomButton}</td><td>${addDadButton}</td></tr>
+                </tbody>
+            </table>
+        </form>
+        `;
+    }
+
+
+    function setFormData(childid, relation) {
+        document.getElementById(`childid-${childid}`).value = childid;
+        document.getElementById(`relation-${childid}`).value = relation;
+        document.getElementById(`personForm-${childid}`).action = "/newperson";
+        document.getElementById(`personForm-${childid}`).submit();
+    }
+
+
+    function editRecord(editPersonId) {
+        let url = `/editperson?q=${editPersonId}`;
+        window.location.href = url;
+    }
+
+
+    function checkVariable() {
+                    if (typeof id1 !== 'undefined') {
+
+                    } else {
+                        id1 = people[0].id;
+                    };
+    }
+
+
+    function clearTables() {
+                    let tableHTML = "";
+                    let placeholderClears = ['placeholder1', 'placeholder2', 'placeholder3','placeholder4', 'placeholder5', 'placeholder6', 'placeholder7'];
+
+                    placeholderClears.forEach((placeholderClear) => {
+                        document.getElementById(placeholderClear).innerHTML = tableHTML;
+                    });
+    }
+
+
+    function showPerson(personId) {
+                    event.preventDefault();
+                    clearTables();
+                    const person = people.find(person => person.id === personId);
+                    if (person) {
+                        id1 = personId;
+                        generatePyramid(people);
+                        if (id1 == people[0].id) {
+                            let button = document.getElementById('restart');
+                            button.style.visibility = 'hidden';
+                        } else {
+                            let button = document.getElementById('restart');
+                            button.style.visibility = 'visible';
+                        };
+                    }
+    }
+
+
+    function generatePyramid(people) {
+                // start with people[0], set id1,2,3 for future loops----------------------------------------------------------------level A
+                    // run checkFunction() to set id1 = person[0].id at window load
+
+                    let id2 = 0;
+                    let id3 = 0;
+
+                    checkVariable() ;
+
+                    people.forEach((person) => {
+                        if (person.id == id1) {
+                            let tableHTML = generateTableHTML(person);
+                            document.getElementById('placeholder1').innerHTML = tableHTML;
+                            id2 = person.mother;
+                            id3 = person.father;
+                        }
+                    });
+
+                // loop through people again to set person[2,3]----------------------------------------------------------------------level B
+
+                    let id4;
+                    let id5;
+                    let id6;
+                    let id7;
+
+                    people.forEach((person) => {
+                        if (person.id == id2) {
+                            id4 = person.mother;
+                            id5 = person.father;
+                            let tableHTML = generateTableHTML(person);
+                            document.getElementById('placeholder2').innerHTML = tableHTML;
+                        }
+                        if (person.id == id3) {
+                            id6 = person.mother;
+                            id7 = person.father;
+                            let tableHTML = generateTableHTML(person);
+                            document.getElementById('placeholder3').innerHTML = tableHTML;
+                        }
+                    });
+
+                // restart loop now that all id[i]'s are set, this time sending info to placeholders1,2,3,4,5,6,7 ---------------------level C
+
+                    let idcs = [id4, id5, id6, id7];
+                    let placeholdercs = ['placeholder4', 'placeholder5', 'placeholder6', 'placeholder7'];
+
+                    people.forEach((person) => {
+                    idcs.forEach((idc, i) => {
+                            if (person.id == idc) {
+                                let tableHTML = generateTableHTML(person);
+                                document.getElementById(placeholdercs[i]).innerHTML = tableHTML;
+                            }
+                        });
+                    });
+
+    }
+
+
+
+
+
+
+//    // Initial load
+//    let tableHTML = generateTableHTML(people[0]);
+//    document.getElementById('placeholder1').innerHTML = tableHTML;
+//
+//    // Populate other placeholders if needed
+//    // ...
+
+
+
+    generatePyramid(people);
+
+</script>
+
+
+{% endblock %}
+

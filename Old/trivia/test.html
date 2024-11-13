@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Test Buttons</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+  </head>
+  <body>
+    <button style = "red" id="red">R</button>
+    <button id="green">G</button>
+    <button id = "blue">B</button>
+
+    <script>
+        let body = document.querySelector('body');
+        document.querySelector('#red').addEventListener('click', function(){
+            body.style.backgroundColor = 'red';
+        });
+        document.querySelector('#green').addEventListener('click', function(){
+            body.style.backgroundColor = 'green';
+        });
+        document.querySelector('#blue').addEventListener('click', function(){
+            body.style.backgroundColor = 'blue';
+        });
+    </script>
+  </body>
+</html>

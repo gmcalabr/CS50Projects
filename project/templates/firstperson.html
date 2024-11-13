@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Tell us about YOU
+{% endblock %}
+
+{% block main %}
+
+<form action="/firstperson" method="post">
+    <div class="mb-3">
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="first" placeholder="First Name" type="text" required>
+        <p></p>
+        <input autocomplete="off" class="form-control mx-auto w-auto" name="last" placeholder="Last Name" type="text" required>
+        <p></p>
+        <input autocomplete="off" class="form-control mx-auto w-auto" name="middle" placeholder="Middle Name" type="text">
+        <p></p>
+        <input autocomplete="off" class="form-control mx-auto w-auto" name="birthdate" placeholder="Birthday" type="date">
+        <p></p>
+        <input autocomplete="off" class="form-control mx-auto w-auto" name="birthcity" placeholder="Birth City" type="text">
+        <p></p>
+        <input autocomplete="off" class="form-control mx-auto w-auto" name="birthcountry" placeholder="Birth Country" type="text">
+        <p></p>
+        <input autocomplete="off" class="form-control mx-auto w-auto" name="deathdate" placeholder="Death Date" type="date">
+        <p></p>
+        <input autocomplete="off" class="form-control mx-auto w-auto" name="deathcity" placeholder="Death City" type="text">
+        <p></p>
+        <input autocomplete="off" class="form-control mx-auto w-auto" name="deathcountry" placeholder="Death Country" type="text">
+        <p></p>
+        <input autocomplete="off" class="form-control mx-auto w-auto" name="occupation1" placeholder="First Occupation" type="text">
+        <p></p>
+        <input autocomplete="off" class="form-control mx-auto w-auto" name="occupation2" placeholder="Second Occupation" type="text">
+        <p></p>
+        <input autocomplete="off" class="form-control mx-auto w-auto" name="occupation3" placeholder="Third Occupation" type="text">
+    </div>
+    <button class="btn btn-primary" type="submit">Submit Information</button>
+
+</form>
+
+{% endblock %}

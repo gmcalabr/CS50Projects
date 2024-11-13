@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    New Person
+{% endblock %}
+
+{% block main %}
+
+    <div id="alert-placeholder"></div>
+
+    <form action="/newperson" method="post">
+        <div class="mb-3">
+
+            <p>Who is this new person's child?</p>
+            <select class="form-select mx-auto w-auto" name="relative">
+                <option disabled selected>Relative</option>
+                {% for relative in relatives %}
+                    <option value="{{ relative.id }}" {% if relative.id|string == childid|string %}selected{% endif %}>
+                        {{ relative.first }} {{ relative.last }} born {{ relative.birthdate }}
+                    </option>
+                {% endfor %}
+            </select>
+
+            <p>Relationship to that child:</p>
+            <input type="radio" id="relation1" name="relation" value="mother" {% if relation == 'mom' %}checked{% endif %}>
+            <label for="relation1">Mother</label><br>
+            <input type="radio" id="relation2" name="relation" value="father" {% if relation == 'dad' %}checked{% endif %}>
+            <label for="relation2">Father</label><br>
+
+            <p></p>
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="first" placeholder="First Name" type="text" required>
+            <p></p>
+            <input autocomplete="off" class="form-control mx-auto w-auto" name="last" placeholder="Last Name" type="text" required>
+            <p></p>
+            <input autocomplete="off" class="form-control mx-auto w-auto" name="middle" placeholder="Middle Name" type="text">
+            <p></p>
+            <input autocomplete="off" class="form-control mx-auto w-auto" name="birthdate" placeholder="Birthday" type="date">
+            <p></p>
+            <input autocomplete="off" class="form-control mx-auto w-auto" name="birthcity" placeholder="Birth City" type="text">
+            <p></p>
+            <input autocomplete="off" class="form-control mx-auto w-auto" name="birthcountry" placeholder="Birth Country" type="text">
+            <p></p>
+            <input autocomplete="off" class="form-control mx-auto w-auto" name="deathdate" placeholder="Death Date" type="date">
+            <p></p>
+            <input autocomplete="off" class="form-control mx-auto w-auto" name="deathcity" placeholder="Death City" type="text">
+            <p></p>
+            <input autocomplete="off" class="form-control mx-auto w-auto" name="deathcountry" placeholder="Death Country" type="text">
+            <p></p>
+            <input autocomplete="off" class="form-control mx-auto w-auto" name="occupation1" placeholder="First Occupation" type="text">
+            <p></p>
+            <input autocomplete="off" class="form-control mx-auto w-auto" name="occupation2" placeholder="Second Occupation" type="text">
+            <p></p>
+            <input autocomplete="off" class="form-control mx-auto w-auto" name="occupation3" placeholder="Third Occupation" type="text">
+        </div>
+
+        <button class="btn btn-primary" type="submit">Add this relative to your tree</button>
+
+    </form>
+
+    <script>
+        window.onload = function() {
+            function showAlert(message) {
+                const alertPlaceholder = document.getElementById('alert-placeholder');
+                alertPlaceholder.innerHTML = `
+                <div class="alert alert-primary mb-0 text-center" role="alert">
+                    ${message}
+                </div>
+            `;
+            }
+
+            const urlParams = new
+            URLSearchParams(window.location.search);
+            const alert = urlParams.get('alert');
+            console.log(alert);
+            if alert != Null:
+                showAlert(alert)
+        };
+
+    </script>
+
+{% endblock %}

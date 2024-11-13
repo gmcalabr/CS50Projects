@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+
+    {% if request.method == "GET" %}
+
+        <form action="/sell" method="post">
+            <div class="mb-3">
+
+                <select class="form-select mx-auto w-auto" name="symbol">
+                    <option disabled="" selected="">Symbol</option>
+                    {% for stock in stocks %}
+                        <option value="{{ stock.symbol }}">{{ stock.symbol }}</option>
+                    {% endfor %}
+                </select>
+
+                <p></p>
+                <input autocomplete="off" class="form-control mx-auto w-auto" min="1" name="shares" placeholder="Shares" type="number">
+            </div>
+            <button class="btn btn-primary" type="submit">sell</button>
+
+        </form>
+    {% elif request.method == "POST" %}
+
+        <p>Symbol: {{ symbol }}</p>
+        <p>Shares : {{ shares }}</p>
+        <p>Share Price : {{ prettyprice }}</p>
+        <p>Transaction timestamp: {{ timestamp }}</p>
+        <p>Remaining Cash in your account : {{ newcash }}</p>
+
+    {% endif %}
+
+{% endblock %}

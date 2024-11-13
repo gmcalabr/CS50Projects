@@ -1,0 +1,24 @@
+HTML tags used
+<html>
+<head>
+<body>
+<title>
+<div>
+<p>
+<h3>
+<script>
+<link>
+<button>
+
+5 CSS properties used
+1. <Header>
+2. <Journal>
+3. .mclaren-clicked
+4. .lambo-clicked
+5. .vette-clicked
+
+Use of Bootstrap
+I used bootstrap to provide attractive table formatting inside the 3 subpages of my website.
+
+Use of Javascript
+I used js to create more conversational links between my index page and the three other pages.

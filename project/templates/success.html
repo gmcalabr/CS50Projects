@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Apology
+{% endblock %}
+
+{% block main %}
+<!-- https://memegen.link/ -->
+<!-- https://knowyourmeme.com/memes/grumpy-cat -->
+    <img alt="{{ top }}" class="border img-fluid" src="https://api.memegen.link/images/custom/{{ top | urlencode }}/{{ bottom | urlencode }}.jpg?background=https://upload.wikimedia.org/wikipedia/en/f/ff/SuccessKid.jpg&width=400" title="{{ top }}">
+    <p></p>
+    <a href="/login">Click here to return to Login</a>
+
+{% endblock %}

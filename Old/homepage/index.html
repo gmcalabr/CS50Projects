@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+        <link href="styles.css" rel="stylesheet">
+        <title>My Webpage</title>
+    </head>
+
+
+    <body>
+        <center><header>Welcome to my crappy automotive-related webpage!</header></center>
+        <center>
+            <journal>
+                Hi, welcome to my absurdly simple webpage. This is honestly a far worse version of the webpage that I created when I was 12,
+                except that I'm doing this entirely in HTML and using CCS and javascript as well. My first attempt when I was 12 was made
+                using MS Frontpage. So I'd say this is better.
+            </journal>
+        </center>
+
+        <div class="container">
+
+            <div class="section">
+                <hr>
+                <h3>Which car would you like to see first?</h3>
+
+                <button class="mclaren">1995 McLaren F1 LM</button>
+                <button class="lambo">1990 Lamborghini Diablo</button>
+                <button class="vette">1967 Chevrolet Corvette 427</button>
+
+                <p id = "response1"></p>
+            </div>
+    </body>
+
+    <script>
+        window.addEventListener("load", function () {
+
+            let mclaren = document.querySelector('.mclaren');
+                mclaren.addEventListener('click', function () {
+                    mclaren.classList.add('mclaren-clicked');
+                    document.querySelector('#response1').innerHTML = '<a href="https://curly-guide-x594ppg69jvg3vvpp-8080.app.github.dev/homepage/mclaren.html">Nothing but the best! Click here to see more.</a>';
+            });
+
+            let lambo = document.querySelector('.lambo');
+                lambo.addEventListener('click', function () {
+                    lambo.classList.add('lambo-clicked');
+                    document.querySelector('#response1').innerHTML = '<a href="https://curly-guide-x594ppg69jvg3vvpp-8080.app.github.dev/homepage/lambo.html">My personal introduction to cool cars! Click here to see more.</a>';
+            });
+
+            let vette = document.querySelector('.vette');
+                vette.addEventListener('click', function () {
+                    vette.classList.add('vette-clicked');
+                    document.querySelector('#response1').innerHTML = '<a href="https://curly-guide-x594ppg69jvg3vvpp-8080.app.github.dev/homepage/vette.html">Quite possibly the coolest car to ever exist! Click here to see more.</a>';
+            });
+
+        });
+    </script>
+
+
+</html>

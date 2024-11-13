@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+
+    <div id="alert-placeholder"></div>
+
+    <main class="container py-5 text-center">
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="text-start">Symbol</th>
+                    <th class="text-end">Shares</th>
+                    <th class="text-end">Price</th>
+                    <th class="text-end">TOTAL</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stock in stocks %}
+                    {% set result = lookup(stock.symbol) %}
+                    {% set price = result.price %}
+                    {% set prettyprice = usd(price) %}
+                    {% set prettypricetotal = usd(stock.shares * price) %}
+
+                    <tr>
+                        <td class="text-start">{{ result.name }}</td>
+                        <td class="text-end">{{ stock.shares }}</td>
+                        <td class="text-end">{{ usd(price) }}</td>
+                        <td class="text-end">{{ usd(stock.shares * price) }}</td>
+                    </tr>
+
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td class="border-0 fw-bold text-end" colspan="3">Cash</td>
+                    <td class="border-0 text-end">{{ usd(cash) }}</td>
+                </tr>
+                <tr>
+                    <td class="border-0 fw-bold text-end" colspan="3">TOTAL</td>
+                    <td class="border-0 w-bold text-end">{{ usd(cash + totalsharevalue) }}</td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <script>
+            window.onload = function() {
+                function showAlert(message) {
+                    const alertPlaceholder = document.getElementById('alert-placeholder');
+                    alertPlaceholder.innerHTML = `
+                    <div class="alert alert-primary mb-0 text-center" role="alert">
+                        ${message}
+                    </div>
+                `;
+                }
+
+                const urlParams = new
+                URLSearchParams(window.location.search);
+                const alert = urlParams.get('alert');
+                console.log(alert);
+                if (alert === "bought") {
+                    showAlert("Shares Purchased!");
+                } else if (alert === "sold") {
+                    showAlert("Shares Sold!");
+                } else if (alert === "success") {
+                    showAlert("Success");
+                }
+            };
+        </script>
+
+{% endblock %}

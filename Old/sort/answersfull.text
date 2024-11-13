@@ -1,0 +1,63 @@
+sort1 uses: TODO
+
+How do you know?: TODO
+sorted 5k:      0.2
+sorted 10k:     0.3
+sorted 50k:     0.8
+random 5k:      0.25
+random 10k:     0.5
+random 50k:     8.7
+reversed 5k:    0.4
+reversed 10k:   0.65
+reversed 50k:   5.8
+sorted 50k: steady progress, constant output
+random 50k: long pause, almost instant dump
+reversed 50k: long pause, 3 spits of data
+
+fast no matter what with sorted data
+exponentially slower with random data
+exponentially slower with random data but faster than random
+slowest overall sort
+
+________________________________________________________________
+
+sort2 uses: TODO
+
+How do you know?: TODO
+sorted 5k:      0.15
+sorted 10k:     0.2
+sorted 50k:     1.25
+random 5k:      0.2
+random 10k:     0.25
+random 50k:     1.5
+reversed 5k:    0.25
+reversed 10k:   0.4
+reversed 50k:   1.45
+sorted 50k: no pause, constant output
+random 50k: no pause, constant output
+reversed 50k: no pause, 4-5 spits of data
+
+more linearly slower with more data regardless of data size
+virtually uneffected by data order
+fastest overall sort
+
+________________________________________________________________
+
+sort3 uses: TODO
+
+How do you know?: TODO
+sorted 5k:      0.2
+sorted 10k:     0.25
+sorted 50k:     3.0
+random 5k:      0.25
+random 10k:     0.3
+random 50k:     3.15
+reversed 5k:    0.2
+reversed 10k:   0.3
+reversed 50k:   3.3
+sorted 50k: moderate pause, 3-5 spits of data
+random 50k: moderate pause, 3-5 spits of data
+reversed 50k: moderate pause, 3-5 spits of data
+
+not terribly effected by data order
+exponentially slower with increasing data size
